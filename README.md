@@ -21,7 +21,7 @@ PHP Standalone library for validating data. Inspired by `Illuminate\Validation` 
 
 ## Requirements
 
-* PHP 7.0 or higher
+* PHP 8.0 or higher
 * Composer for installation
 
 ## Quick Start
@@ -29,7 +29,7 @@ PHP Standalone library for validating data. Inspired by `Illuminate\Validation` 
 #### Installation
 
 ```
-composer require "rakit/validation"
+composer require "beauty-framework/validation"
 ```
 
 #### Usage
@@ -45,9 +45,9 @@ Using `make`:
 
 require('vendor/autoload.php');
 
-use Rakit\Validation\Validator;
+use Beauty\Validation\Validator;
 
-$validator = new Validator;
+$validator = new Validator();
 
 // make it
 $validation = $validator->make($_POST + $_FILES, [
@@ -85,7 +85,7 @@ or just `validate` it:
 
 require('vendor/autoload.php');
 
-use Rakit\Validation\Validator;
+use Beauty\Validation\Validator;
 
 $validator = new Validator;
 
@@ -939,7 +939,7 @@ $validation = $validator->validate($_POST, [
 ]);
 ```
 
-> Note: `Rakit\Validation\Rules\Callback` instance is binded into your Closure.
+> Note: `Beauty\Validation\Rules\Callback` instance is binded into your Closure.
   So you can access rule properties and methods using `$this`.
 
 </details>
@@ -962,7 +962,7 @@ First, lets create `UniqueRule` class:
 ```php
 <?php
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class UniqueRule extends Rule
 {
@@ -1007,7 +1007,7 @@ class UniqueRule extends Rule
 Then you need to register `UniqueRule` instance into validator like this:
 
 ```php
-use Rakit\Validation\Validator;
+use Beauty\Validation\Validator;
 
 $validator = new Validator;
 
@@ -1049,7 +1049,7 @@ So you can improve `UniqueRule` class above by adding some methods that returnin
 ```php
 <?php
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class UniqueRule extends Rule
 {
@@ -1098,7 +1098,7 @@ To make your custom rule implicit, you can make `$implicit` property value to be
 ```php
 <?php
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class YourCustomRule extends Rule
 {
@@ -1112,15 +1112,15 @@ class YourCustomRule extends Rule
 
 In some case, you may want your custom rule to be able to modify it's attribute value like our `default/defaults` rule. So in current and next rules checks, your modified value will be used.
 
-To do this, you should implements `Rakit\Validation\Rules\Interfaces\ModifyValue` and create method `modifyValue($value)` to your custom rule class.
+To do this, you should implements `Beauty\Validation\Rules\Interfaces\ModifyValue` and create method `modifyValue($value)` to your custom rule class.
 
 For example:
 
 ```php
 <?php
 
-use Rakit\Validation\Rule;
-use Rakit\Validation\Rules\Interfaces\ModifyValue;
+use Beauty\Validation\Rule;
+use Beauty\Validation\Rules\Interfaces\ModifyValue;
 
 class YourCustomRule extends Rule implements ModifyValue
 {
@@ -1141,15 +1141,15 @@ class YourCustomRule extends Rule implements ModifyValue
 
 You may want to do some preparation before validation running. For example our `uploaded_file` rule will resolves attribute value that come from `$_FILES` (undesirable) array structure to be well-organized array structure, so we can validate multiple file upload just like validating other data.
 
-To do this, you should implements `Rakit\Validation\Rules\Interfaces\BeforeValidate` and create method `beforeValidate()` to your custom rule class.
+To do this, you should implements `Beauty\Validation\Rules\Interfaces\BeforeValidate` and create method `beforeValidate()` to your custom rule class.
 
 For example:
 
 ```php
 <?php
 
-use Rakit\Validation\Rule;
-use Rakit\Validation\Rules\Interfaces\BeforeValidate;
+use Beauty\Validation\Rule;
+use Beauty\Validation\Rules\Interfaces\BeforeValidate;
 
 class YourCustomRule extends Rule implements BeforeValidate
 {
