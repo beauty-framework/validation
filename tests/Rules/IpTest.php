@@ -1,14 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Tests;
+namespace Beauty\Validation\Tests;
 
-use Rakit\Validation\Rules\Ip;
+use Beauty\Validation\Rules\Ip;
 use PHPUnit\Framework\TestCase;
 
 class IpTest extends TestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->rule = new Ip;
     }

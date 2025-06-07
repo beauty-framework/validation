@@ -1,14 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class AlphaNum extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute only allows alphabet and numeric";
+    protected string $message = "The :attribute only allows alphabet and numeric";
 
     /**
      * Check the $value is valid

@@ -1,23 +1,25 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\MissingRequiredParameterException;
+use Beauty\Validation\Rule;
 
 class DigitsBetween extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute must have a length between the given :min and :max";
+    protected string $message = "The :attribute must have a length between the given :min and :max";
 
     /** @var array */
-    protected $fillableParams = ['min', 'max'];
+    protected array $fillableParams = ['min', 'max'];
 
     /**
      * Check the $value is valid
      *
      * @param mixed $value
      * @return bool
+     * @throws MissingRequiredParameterException
      */
     public function check($value): bool
     {

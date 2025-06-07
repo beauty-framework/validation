@@ -1,14 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Tests;
+namespace Beauty\Validation\Tests;
 
-use Rakit\Validation\Rules\Uppercase;
+use Beauty\Validation\Rules\Uppercase;
 use PHPUnit\Framework\TestCase;
 
 class UppercaseTest extends TestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->rule = new Uppercase;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rakit\Validation\Rules\Interfaces;
+namespace Beauty\Validation\Rules\Interfaces;
 
 interface BeforeValidate
 {
@@ -9,5 +9,5 @@ interface BeforeValidate
      *
      * @return void
      */
-    public function beforeValidate();
+    public function beforeValidate(): void;
 }

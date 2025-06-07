@@ -1,18 +1,19 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Helper;
-use Rakit\Validation\Rule;
+use Beauty\Validation\Helper;
+use Beauty\Validation\MissingRequiredParameterException;
+use Beauty\Validation\Rule;
 
 class NotIn extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute is not allowing :disallowed_values";
+    protected string $message = "The :attribute is not allowing :disallowed_values";
 
     /** @var bool */
-    protected $strict = false;
+    protected bool $strict = false;
 
     /**
      * Given $params and assign the $this->params
@@ -45,6 +46,7 @@ class NotIn extends Rule
      *
      * @param mixed $value
      * @return bool
+     * @throws MissingRequiredParameterException
      */
     public function check($value): bool
     {

@@ -1,14 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class Lowercase extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute must be lowercase";
+    protected string $message = "The :attribute must be lowercase";
 
     /**
      * Check the $value is valid

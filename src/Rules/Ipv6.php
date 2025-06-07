@@ -1,14 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class Ipv6 extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute is not valid IPv6 Address";
+    protected string $message = "The :attribute is not valid IPv6 Address";
 
     /**
      * Check the $value is valid

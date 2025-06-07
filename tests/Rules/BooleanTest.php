@@ -1,13 +1,13 @@
 <?php
 
-namespace Rakit\Validation\Tests;
+namespace Beauty\Validation\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Rakit\Validation\Rules\Boolean;
+use Beauty\Validation\Rules\Boolean;
 
 class BooleanTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->rule = new Boolean;
     }

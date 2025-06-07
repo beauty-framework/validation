@@ -1,11 +1,12 @@
 <?php
 
-namespace Rakit\Validation;
+namespace Beauty\Validation;
 
 use Closure;
-use Rakit\Validation\Rules\Interfaces\BeforeValidate;
-use Rakit\Validation\Rules\Interfaces\ModifyValue;
-use Rakit\Validation\Rules\Required;
+use Beauty\Validation\Rules\Interfaces\BeforeValidate;
+use Beauty\Validation\Rules\Interfaces\ModifyValue;
+use Beauty\Validation\Rules\Required;
+use Exception;
 
 class Validation
 {
@@ -15,30 +16,30 @@ class Validation
     protected $validator;
 
     /** @var array */
-    protected $inputs = [];
+    protected array $inputs = [];
 
     /** @var array */
-    protected $attributes = [];
+    protected array $attributes = [];
 
     /** @var array */
-    protected $aliases = [];
+    protected array $aliases = [];
 
     /** @var string */
-    protected $messageSeparator = ':';
+    protected string $messageSeparator = ':';
 
     /** @var array */
-    protected $validData = [];
+    protected array $validData = [];
 
     /** @var array */
-    protected $invalidData = [];
+    protected array $invalidData = [];
 
     /** @var ErrorBag */
-    public $errors;
+    public ErrorBag $errors;
 
     /**
      * Constructor
      *
-     * @param \Rakit\Validation\Validator $validator
+     * @param Validator $validator
      * @param array $inputs
      * @param array $rules
      * @param array $messages
@@ -65,8 +66,9 @@ class Validation
      * @param string $attributeKey
      * @param string|array $rules
      * @return void
+     * @throws Exception
      */
-    public function addAttribute(string $attributeKey, $rules)
+    public function addAttribute(string $attributeKey, $rules): void
     {
         $resolvedRules = $this->resolveRules($rules);
         $attribute = new Attribute($this, $attributeKey, $this->getAlias($attributeKey), $resolvedRules);
@@ -77,9 +79,9 @@ class Validation
      * Get attribute by key
      *
      * @param string $attributeKey
-     * @return null|\Rakit\Validation\Attribute
+     * @return null|Attribute
      */
-    public function getAttribute(string $attributeKey)
+    public function getAttribute(string $attributeKey): Attribute|null
     {
         return isset($this->attributes[$attributeKey])? $this->attributes[$attributeKey] : null;
     }
@@ -90,7 +92,7 @@ class Validation
      * @param array $inputs
      * @return void
      */
-    public function validate(array $inputs = [])
+    public function validate(array $inputs = []): void
     {
         $this->errors = new ErrorBag; // reset error bag
         $this->inputs = array_merge($this->inputs, $this->resolveInputAttributes($inputs));
@@ -112,7 +114,7 @@ class Validation
     /**
      * Get ErrorBag instance
      *
-     * @return \Rakit\Validation\ErrorBag
+     * @return ErrorBag
      */
     public function errors(): ErrorBag
     {
@@ -122,10 +124,11 @@ class Validation
     /**
      * Validate attribute
      *
-     * @param \Rakit\Validation\Attribute $attribute
+     * @param Attribute $attribute
      * @return void
+     * @throws MissingRequiredParameterException
      */
-    protected function validateAttribute(Attribute $attribute)
+    protected function validateAttribute(Attribute $attribute): void
     {
         if ($this->isArrayAttribute($attribute)) {
             $attributes = $this->parseArrayAttribute($attribute);
@@ -179,19 +182,19 @@ class Validation
     /**
      * Check whether given $attribute is array attribute
      *
-     * @param \Rakit\Validation\Attribute $attribute
+     * @param Attribute $attribute
      * @return bool
      */
     protected function isArrayAttribute(Attribute $attribute): bool
     {
         $key = $attribute->getKey();
-        return strpos($key, '*') !== false;
+        return str_contains($key, '*');
     }
 
     /**
      * Parse array attribute into it's child attributes
      *
-     * @param \Rakit\Validation\Attribute $attribute
+     * @param Attribute $attribute
      * @return array
      */
     protected function parseArrayAttribute(Attribute $attribute): array
@@ -231,7 +234,7 @@ class Validation
      * Gather a copy of the attribute data filled with any missing attributes.
      * Adapted from: https://github.com/illuminate/validation/blob/v5.3.23/Validator.php#L334
      *
-     * @param  string  $attribute
+     * @param string $attributeKey
      * @return array
      */
     protected function initializeAttributeOnData(string $attributeKey): array
@@ -291,7 +294,7 @@ class Validation
      * @param  string  $attributeKey
      * @return string|null null when root wildcard
      */
-    protected function getLeadingExplicitAttributePath(string $attributeKey)
+    protected function getLeadingExplicitAttributePath(string $attributeKey): string|null
     {
         return rtrim(explode('*', $attributeKey)[0], '.') ?: null;
     }
@@ -321,9 +324,9 @@ class Validation
     /**
      * Add error to the $this->errors
      *
-     * @param \Rakit\Validation\Attribute $attribute
+     * @param Attribute $attribute
      * @param mixed $value
-     * @param \Rakit\Validation\Rule $ruleValidator
+     * @param Rule $ruleValidator
      * @return void
      */
     protected function addError(Attribute $attribute, $value, Rule $ruleValidator)
@@ -349,8 +352,8 @@ class Validation
     /**
      * Check the rule is optional
      *
-     * @param \Rakit\Validation\Attribute $attribute
-     * @param \Rakit\Validation\Rule $rule
+     * @param Attribute $attribute
+     * @param Rule $rule
      * @return bool
      */
     protected function ruleIsOptional(Attribute $attribute, Rule $rule): bool
@@ -363,7 +366,7 @@ class Validation
     /**
      * Resolve attribute name
      *
-     * @param \Rakit\Validation\Attribute $attribute
+     * @param Attribute $attribute
      * @return string
      */
     protected function resolveAttributeName(Attribute $attribute): string
@@ -383,9 +386,9 @@ class Validation
     /**
      * Resolve message
      *
-     * @param \Rakit\Validation\Attribute $attribute
+     * @param Attribute $attribute
      * @param mixed $value
-     * @param \Rakit\Validation\Rule $validator
+     * @param Rule $validator
      * @return mixed
      */
     protected function resolveMessage(Attribute $attribute, $value, Rule $validator): string
@@ -473,6 +476,7 @@ class Validation
      *
      * @param mixed $rules
      * @return array
+     * @throws Exception
      */
     protected function resolveRules($rules): array
     {
@@ -499,7 +503,7 @@ class Validation
             } else {
                 $ruleName = is_object($rule) ? get_class($rule) : gettype($rule);
                 $message = "Rule must be a string, Closure or '".Rule::class."' instance. ".$ruleName." given";
-                throw new \Exception();
+                throw new Exception();
             }
 
             $resolvedRules[] = $validator;
@@ -618,7 +622,7 @@ class Validation
     /**
      * Get Validator class instance
      *
-     * @return \Rakit\Validation\Validator
+     * @return Validator
      */
     public function getValidator(): Validator
     {
@@ -661,11 +665,11 @@ class Validation
     /**
      * Set valid data
      *
-     * @param \Rakit\Validation\Attribute $attribute
+     * @param Attribute $attribute
      * @param mixed $value
      * @return void
      */
-    protected function setValidData(Attribute $attribute, $value)
+    protected function setValidData(Attribute $attribute, $value): void
     {
         $key = $attribute->getKey();
         if ($attribute->isArrayAttribute() || $attribute->isUsingDotNotation()) {
@@ -689,11 +693,11 @@ class Validation
     /**
      * Set invalid data
      *
-     * @param \Rakit\Validation\Attribute $attribute
+     * @param Attribute $attribute
      * @param mixed $value
      * @return void
      */
-    protected function setInvalidData(Attribute $attribute, $value)
+    protected function setInvalidData(Attribute $attribute, $value): void
     {
         $key = $attribute->getKey();
         if ($attribute->isArrayAttribute() || $attribute->isUsingDotNotation()) {
@@ -707,7 +711,7 @@ class Validation
     /**
      * Get invalid data
      *
-     * @return void
+     * @return array
      */
     public function getInvalidData(): array
     {

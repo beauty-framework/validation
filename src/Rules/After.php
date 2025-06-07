@@ -1,19 +1,18 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class After extends Rule
 {
-
     use Traits\DateUtilsTrait;
 
     /** @var string */
-    protected $message = "The :attribute must be a date after :time.";
+    protected string $message = "The :attribute must be a date after :time.";
 
     /** @var array */
-    protected $fillableParams = ['time'];
+    protected array $fillableParams = ['time'];
 
     /**
      * Check the value is valid

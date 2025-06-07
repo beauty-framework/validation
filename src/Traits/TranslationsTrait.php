@@ -1,12 +1,12 @@
 <?php
 
-namespace Rakit\Validation\Traits;
+namespace Beauty\Validation\Traits;
 
 trait TranslationsTrait
 {
 
     /** @var array */
-    protected $translations = [];
+    protected array $translations = [];
 
     /**
      * Given $key and $translation to set translation
@@ -15,7 +15,7 @@ trait TranslationsTrait
      * @param mixed $translation
      * @return void
      */
-    public function setTranslation(string $key, string $translation)
+    public function setTranslation(string $key, string $translation): void
     {
         $this->translations[$key] = $translation;
     }
@@ -26,7 +26,7 @@ trait TranslationsTrait
      * @param array $translations
      * @return void
      */
-    public function setTranslations(array $translations)
+    public function setTranslations(array $translations): void
     {
         $this->translations = array_merge($this->translations, $translations);
     }

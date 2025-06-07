@@ -1,15 +1,15 @@
 <?php
 
-namespace Rakit\Validation\Tests;
+namespace Beauty\Validation\Tests;
 
-use Rakit\Validation\Rules\Required;
+use Beauty\Validation\Rules\Required;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
 class RequiredTest extends TestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->rule = new Required;
     }

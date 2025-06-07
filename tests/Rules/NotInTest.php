@@ -1,14 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Tests;
+namespace Beauty\Validation\Tests;
 
-use Rakit\Validation\Rules\NotIn;
+use Beauty\Validation\Rules\NotIn;
 use PHPUnit\Framework\TestCase;
 
 class NotInTest extends TestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->rule = new NotIn;
     }

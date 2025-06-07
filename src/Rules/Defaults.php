@@ -1,24 +1,26 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
-use Rakit\Validation\Rules\Interfaces\ModifyValue;
+use Beauty\Validation\MissingRequiredParameterException;
+use Beauty\Validation\Rule;
+use Beauty\Validation\Rules\Interfaces\ModifyValue;
 
 class Defaults extends Rule implements ModifyValue
 {
 
     /** @var string */
-    protected $message = "The :attribute default is :default";
+    protected string $message = "The :attribute default is :default";
 
     /** @var array */
-    protected $fillableParams = ['default'];
+    protected array $fillableParams = ['default'];
 
     /**
      * Check the $value is valid
      *
      * @param mixed $value
      * @return bool
+     * @throws MissingRequiredParameterException
      */
     public function check($value): bool
     {
@@ -31,7 +33,7 @@ class Defaults extends Rule implements ModifyValue
     /**
      * {@inheritDoc}
      */
-    public function modifyValue($value)
+    public function modifyValue($value): mixed
     {
         return $this->isEmptyValue($value) ? $this->parameter('default') : $value;
     }

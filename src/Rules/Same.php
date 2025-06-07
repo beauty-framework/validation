@@ -1,23 +1,25 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
+use Beauty\Validation\MissingRequiredParameterException;
 
 class Same extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute must be same with :field";
+    protected string $message = "The :attribute must be same with :field";
 
     /** @var array */
-    protected $fillableParams = ['field'];
+    protected array $fillableParams = ['field'];
 
     /**
      * Check the $value is valid
      *
      * @param mixed $value
      * @return bool
+     * @throws MissingRequiredParameterException
      */
     public function check($value): bool
     {

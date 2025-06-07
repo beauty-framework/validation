@@ -1,23 +1,25 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
+use Beauty\Validation\MissingRequiredParameterException;
 
 class Regex extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute is not valid format";
+    protected string $message = "The :attribute is not valid format";
 
     /** @var array */
-    protected $fillableParams = ['regex'];
+    protected array $fillableParams = ['regex'];
 
     /**
      * Check the $value is valid
      *
      * @param mixed $value
      * @return bool
+     * @throws MissingRequiredParameterException
      */
     public function check($value): bool
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Rakit\Validation\Tests;
+namespace Beauty\Validation\Tests;
 
-use Rakit\Validation\Rules\Before;
+use Beauty\Validation\Rules\Before;
 use PHPUnit\Framework\TestCase;
 use DateTime;
 
@@ -10,11 +10,11 @@ class BeforeTest extends TestCase
 {
 
     /**
-     * @var \Rakit\Validation\Rules\Before
+     * @var \Beauty\Validation\Rules\Before
      */
     protected $validator;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->validator = new Before();
     }

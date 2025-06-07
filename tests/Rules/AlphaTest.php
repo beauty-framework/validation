@@ -1,15 +1,15 @@
 <?php
 
-namespace Rakit\Validation\Tests;
+namespace Beauty\Validation\Tests;
 
-use Rakit\Validation\Rules\Alpha;
+use Beauty\Validation\Rules\Alpha;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
 class AlphaTest extends TestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->rule = new Alpha;
     }

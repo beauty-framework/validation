@@ -1,24 +1,26 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\MissingRequiredParameterException;
+use Beauty\Validation\Rule;
 
 class Max extends Rule
 {
     use Traits\SizeTrait;
 
     /** @var string */
-    protected $message = "The :attribute maximum is :max";
+    protected string $message = "The :attribute maximum is :max";
 
     /** @var array */
-    protected $fillableParams = ['max'];
+    protected array $fillableParams = ['max'];
 
     /**
      * Check the $value is valid
      *
      * @param mixed $value
      * @return bool
+     * @throws MissingRequiredParameterException
      */
     public function check($value): bool
     {

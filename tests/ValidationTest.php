@@ -1,9 +1,9 @@
 <?php
 
-namespace Rakit\Validation\Tests;
+namespace Beauty\Validation\Tests;
 
-use Rakit\Validation\Validation;
-use Rakit\Validation\Validator;
+use Beauty\Validation\Validation;
+use Beauty\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
@@ -13,6 +13,7 @@ class ValidationTest extends TestCase
      * @param string $rules
      * @param array $expectedResult
      *
+     * @throws \ReflectionException
      * @dataProvider parseRuleProvider
      */
     public function testParseRule($rules, $expectedResult)

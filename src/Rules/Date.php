@@ -1,20 +1,21 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\MissingRequiredParameterException;
+use Beauty\Validation\Rule;
 
 class Date extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute is not valid date format";
+    protected string $message = "The :attribute is not valid date format";
 
     /** @var array */
-    protected $fillableParams = ['format'];
+    protected array $fillableParams = ['format'];
 
     /** @var array */
-    protected $params = [
+    protected array $params = [
         'format' => 'Y-m-d'
     ];
 
@@ -23,6 +24,7 @@ class Date extends Rule
      *
      * @param mixed $value
      * @return bool
+     * @throws MissingRequiredParameterException
      */
     public function check($value): bool
     {

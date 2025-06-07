@@ -1,8 +1,9 @@
 <?php
 
-namespace Rakit\Validation\Tests;
+namespace Beauty\Validation\Tests;
 
-use Rakit\Validation\Rules\After;
+use Beauty\Validation\Rules\After;
+use Exception;
 use PHPUnit\Framework\TestCase;
 use DateTime;
 
@@ -10,11 +11,11 @@ class AfterTest extends TestCase
 {
 
     /**
-     * @var \Rakit\Validation\Rules\After
+     * @var After
      */
-    protected $validator;
+    protected After $validator;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->validator = new After();
     }
@@ -31,7 +32,7 @@ class AfterTest extends TestCase
 
     /**
      * @dataProvider getInvalidDates
-     * @expectedException \Exception
+     * @expectedException Exception
      */
     public function testANonWellFormedDateCannotBeValidated($date)
     {
@@ -39,7 +40,7 @@ class AfterTest extends TestCase
     }
 
     /**
-     * @expectedException \Exception
+     * @expectedException Exception
      */
     public function testUserProvidedParamCannotBeValidatedBecauseItIsInvalid()
     {

@@ -1,16 +1,16 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class Accepted extends Rule
 {
     /** @var bool */
-    protected $implicit = true;
+    protected bool $implicit = true;
 
     /** @var string */
-    protected $message = "The :attribute must be accepted";
+    protected string $message = "The :attribute must be accepted";
 
     /**
      * Check the $value is accepted

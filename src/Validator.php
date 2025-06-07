@@ -1,22 +1,22 @@
 <?php
 
-namespace Rakit\Validation;
+namespace Beauty\Validation;
 
 class Validator
 {
     use Traits\TranslationsTrait, Traits\MessagesTrait;
 
     /** @var array */
-    protected $translations = [];
+    protected array $translations = [];
 
     /** @var array */
-    protected $validators = [];
+    protected array $validators = [];
 
     /** @var bool */
-    protected $allowRuleOverride = false;
+    protected bool $allowRuleOverride = false;
 
     /** @var bool */
-    protected $useHumanizedKeys = true;
+    protected bool $useHumanizedKeys = true;
 
     /**
      * Constructor
@@ -34,10 +34,10 @@ class Validator
      * Register or override existing validator
      *
      * @param mixed $key
-     * @param \Rakit\Validation\Rule $rule
+     * @param Rule $rule
      * @return void
      */
-    public function setValidator(string $key, Rule $rule)
+    public function setValidator(string $key, Rule $rule): void
     {
         $this->validators[$key] = $rule;
         $rule->setKey($key);
@@ -49,7 +49,7 @@ class Validator
      * @param mixed $key
      * @return mixed
      */
-    public function getValidator($key)
+    public function getValidator($key): mixed
     {
         return isset($this->validators[$key]) ? $this->validators[$key] : null;
     }
@@ -173,10 +173,11 @@ class Validator
      * Given $ruleName and $rule to add new validator
      *
      * @param string $ruleName
-     * @param \Rakit\Validation\Rule $rule
+     * @param Rule $rule
      * @return void
+     * @throws RuleQuashException
      */
-    public function addValidator(string $ruleName, Rule $rule)
+    public function addValidator(string $ruleName, Rule $rule): void
     {
         if (!$this->allowRuleOverride && array_key_exists($ruleName, $this->validators)) {
             throw new RuleQuashException(
@@ -193,7 +194,7 @@ class Validator
      * @param boolean $status
      * @return void
      */
-    public function allowRuleOverride(bool $status = false)
+    public function allowRuleOverride(bool $status = false): void
     {
         $this->allowRuleOverride = $status;
     }
@@ -204,7 +205,7 @@ class Validator
      * @param boolean $useHumanizedKeys
      * @return void
      */
-    public function setUseHumanizedKeys(bool $useHumanizedKeys = true)
+    public function setUseHumanizedKeys(bool $useHumanizedKeys = true): void
     {
         $this->useHumanizedKeys = $useHumanizedKeys;
     }
@@ -212,7 +213,7 @@ class Validator
     /**
      * Get $this->useHumanizedKeys value
      *
-     * @return void
+     * @return bool
      */
     public function isUsingHumanizedKey(): bool
     {

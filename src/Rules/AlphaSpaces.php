@@ -1,14 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class AlphaSpaces extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute may only allows alphabet and spaces";
+    protected string $message = "The :attribute may only allows alphabet and spaces";
 
     /**
      * Check the $value is valid

@@ -1,13 +1,13 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class Boolean extends Rule
 {
     /** @var string */
-    protected $message = "The :attribute must be a boolean";
+    protected string $message = "The :attribute must be a boolean";
 
     /**
      * Check the value is valid

@@ -1,16 +1,18 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\MissingRequiredParameterException;
+use Beauty\Validation\Rule;
+use Beauty\Validation\RuleNotFoundException;
 
 class RequiredIf extends Required
 {
     /** @var bool */
-    protected $implicit = true;
+    protected bool $implicit = true;
 
     /** @var string */
-    protected $message = "The :attribute is required";
+    protected string $message = "The :attribute is required";
 
     /**
      * Given $params and assign the $this->params
@@ -30,6 +32,8 @@ class RequiredIf extends Required
      *
      * @param mixed $value
      * @return bool
+     * @throws MissingRequiredParameterException
+     * @throws RuleNotFoundException
      */
     public function check($value): bool
     {

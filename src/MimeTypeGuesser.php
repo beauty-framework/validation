@@ -1,12 +1,12 @@
 <?php
 
-namespace Rakit\Validation;
+namespace Beauty\Validation;
 
 class MimeTypeGuesser
 {
 
     /** @var array */
-    protected $mimeTypes = [
+    protected array $mimeTypes = [
         'application/andrew-inset' => 'ez',
         'application/applixware' => 'aw',
         'application/atom+xml' => 'atom',
@@ -785,7 +785,7 @@ class MimeTypeGuesser
      * @param string $mimeType
      * @return string|null
      */
-    public function getExtension(string $mimeType)
+    public function getExtension(string $mimeType): string|null
     {
         return isset($this->mimeTypes[$mimeType])? $this->mimeTypes[$mimeType] : null;
     }
@@ -796,7 +796,7 @@ class MimeTypeGuesser
      * @param string $extension
      * @return string|null
      */
-    public function getMimeType(string $extension)
+    public function getMimeType(string $extension): string|null
     {
         $key = array_search($extension, $this->mimeTypes);
         return $key ?: null;

@@ -1,14 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class Ip extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute is not valid IP Address";
+    protected string $message = "The :attribute is not valid IP Address";
 
     /**
      * Check the $value is valid

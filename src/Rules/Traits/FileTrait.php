@@ -1,9 +1,9 @@
 <?php
 
-namespace Rakit\Validation\Rules\Traits;
+namespace Beauty\Validation\Rules\Traits;
 
 use InvalidArgumentException;
-use Rakit\Validation\Helper;
+use Beauty\Validation\Helper;
 
 trait FileTrait
 {

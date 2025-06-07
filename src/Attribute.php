@@ -1,38 +1,38 @@
 <?php
 
-namespace Rakit\Validation;
+namespace Beauty\Validation;
 
 class Attribute
 {
 
     /** @var array */
-    protected $rules = [];
+    protected array $rules = [];
 
     /** @var string */
-    protected $key;
+    protected string $key;
 
     /** @var string|null */
-    protected $alias;
+    protected ?string $alias;
 
-    /** @var \Rakit\Validation\Validation */
-    protected $validation;
+    /** @var Validation */
+    protected Validation $validation;
 
     /** @var bool */
     protected $required = false;
 
-    /** @var \Rakit\Validation\Validation|null */
-    protected $primaryAttribute = null;
+    /** @var Validation|null */
+    protected ?Validation $primaryAttribute = null;
 
     /** @var array */
-    protected $otherAttributes = [];
+    protected array $otherAttributes = [];
 
     /** @var array */
-    protected $keyIndexes = [];
+    protected array $keyIndexes = [];
 
     /**
      * Constructor
      *
-     * @param \Rakit\Validation\Validation  $validation
+     * @param Validation $validation
      * @param string      $key
      * @param string|null $alias
      * @param array       $rules
@@ -40,9 +40,9 @@ class Attribute
      */
     public function __construct(
         Validation $validation,
-        string $key,
-        $alias = null,
-        array $rules = []
+        string     $key,
+        string|null     $alias = null,
+        array      $rules = []
     ) {
         $this->validation = $validation;
         $this->alias = $alias;
@@ -55,7 +55,7 @@ class Attribute
     /**
      * Set the primary attribute
      *
-     * @param \Rakit\Validation\Attribute $primaryAttribute
+     * @param Attribute $primaryAttribute
      * @return void
      */
     public function setPrimaryAttribute(Attribute $primaryAttribute)
@@ -77,9 +77,9 @@ class Attribute
     /**
      * Get primary attributes
      *
-     * @return \Rakit\Validation\Attribute|null
+     * @return Validation|Attribute|null
      */
-    public function getPrimaryAttribute()
+    public function getPrimaryAttribute(): Validation|Attribute|null
     {
         return $this->primaryAttribute;
     }
@@ -90,7 +90,7 @@ class Attribute
      * @param array $otherAttributes
      * @return void
      */
-    public function setOtherAttributes(array $otherAttributes)
+    public function setOtherAttributes(array $otherAttributes): void
     {
         $this->otherAttributes = [];
         foreach ($otherAttributes as $otherAttribute) {
@@ -101,10 +101,10 @@ class Attribute
     /**
      * Add other attributes
      *
-     * @param \Rakit\Validation\Attribute $otherAttribute
+     * @param Attribute $otherAttribute
      * @return void
      */
-    public function addOtherAttribute(Attribute $otherAttribute)
+    public function addOtherAttribute(Attribute $otherAttribute): void
     {
         $this->otherAttributes[] = $otherAttribute;
     }
@@ -122,7 +122,7 @@ class Attribute
     /**
      * Add rule
      *
-     * @param \Rakit\Validation\Rule $rule
+     * @param Rule $rule
      * @return void
      */
     public function addRule(Rule $rule)
@@ -292,7 +292,7 @@ class Attribute
      * @param string $alias
      * @return void
      */
-    public function setAlias(string $alias)
+    public function setAlias(string $alias): void
     {
         $this->alias = $alias;
     }
@@ -302,7 +302,7 @@ class Attribute
      *
      * @return string|null
      */
-    public function getAlias()
+    public function getAlias(): string|null
     {
         return $this->alias;
     }

@@ -1,27 +1,27 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Helper;
-use Rakit\Validation\MimeTypeGuesser;
-use Rakit\Validation\Rule;
-use Rakit\Validation\Rules\Interfaces\BeforeValidate;
+use Beauty\Validation\Helper;
+use Beauty\Validation\MimeTypeGuesser;
+use Beauty\Validation\Rule;
+use Beauty\Validation\Rules\Interfaces\BeforeValidate;
 
 class UploadedFile extends Rule implements BeforeValidate
 {
     use Traits\FileTrait, Traits\SizeTrait;
 
     /** @var string */
-    protected $message = "The :attribute is not valid uploaded file";
+    protected string $message = "The :attribute is not valid uploaded file";
 
-    /** @var string|int */
-    protected $maxSize = null;
+    /** @var string|int|null */
+    protected string|int|null $maxSize = null;
 
-    /** @var string|int */
-    protected $minSize = null;
+    /** @var string|int|null */
+    protected string|int|null $minSize = null;
 
     /** @var array */
-    protected $allowedTypes = [];
+    protected array $allowedTypes = [];
 
     /**
      * Given $params and assign $this->params
@@ -97,7 +97,7 @@ class UploadedFile extends Rule implements BeforeValidate
     /**
      * {@inheritDoc}
      */
-    public function beforeValidate()
+    public function beforeValidate(): void
     {
         $attribute = $this->getAttribute();
 

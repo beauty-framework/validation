@@ -1,18 +1,18 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class Required extends Rule
 {
     use Traits\FileTrait;
 
     /** @var bool */
-    protected $implicit = true;
+    protected bool $implicit = true;
 
     /** @var string */
-    protected $message = "The :attribute is required";
+    protected string $message = "The :attribute is required";
 
     /**
      * Check the $value is valid
@@ -42,7 +42,7 @@ class Required extends Rule
      *
      * @return void
      */
-    protected function setAttributeAsRequired()
+    protected function setAttributeAsRequired(): void
     {
         if ($this->attribute) {
             $this->attribute->setRequired(true);

@@ -1,8 +1,8 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 use InvalidArgumentException;
 use Closure;
 
@@ -10,10 +10,10 @@ class Callback extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute is not valid";
+    protected string $message = "The :attribute is not valid";
 
     /** @var array */
-    protected $fillableParams = ['callback'];
+    protected array $fillableParams = ['callback'];
 
     /**
      * Set the Callback closure

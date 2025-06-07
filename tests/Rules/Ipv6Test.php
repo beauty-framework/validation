@@ -1,14 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Tests;
+namespace Beauty\Validation\Tests;
 
-use Rakit\Validation\Rules\Ipv6;
+use Beauty\Validation\Rules\Ipv6;
 use PHPUnit\Framework\TestCase;
 
 class Ipv6Test extends TestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->rule = new Ipv6;
     }

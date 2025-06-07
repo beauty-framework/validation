@@ -1,14 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class Alpha extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute only allows alphabet characters";
+    protected string $message = "The :attribute only allows alphabet characters";
 
     /**
      * Check the $value is valid

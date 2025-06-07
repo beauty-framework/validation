@@ -1,12 +1,12 @@
 <?php
 
-namespace Rakit\Validation;
+namespace Beauty\Validation;
 
 class ErrorBag
 {
 
     /** @var array */
-    protected $messages = [];
+    protected array $messages = [];
 
     /**
      * Constructor
@@ -27,7 +27,7 @@ class ErrorBag
      * @param string $message
      * @return void
      */
-    public function add(string $key, string $rule, string $message)
+    public function add(string $key, string $rule, string $message): void
     {
         if (!isset($this->messages[$key])) {
             $this->messages[$key] = [];
@@ -75,7 +75,7 @@ class ErrorBag
      * @param string $key
      * @return mixed
      */
-    public function first(string $key)
+    public function first(string $key): mixed
     {
         list($key, $ruleName) = $this->parsekey($key);
         if ($this->isWildcardKey($key)) {

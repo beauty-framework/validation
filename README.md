@@ -1,5 +1,7 @@
-Rakit Validation - PHP Standalone Validation Library
+Beauty Validation - PHP Standalone Validation Library
 ======================================================
+
+forked from [rakit/validation](https://github.com/rakit/validation)
 
 [![Build Status](https://img.shields.io/travis/rakit/validation.svg?style=flat-square)](https://travis-ci.org/rakit/validation)
 [![Coverage Status](https://coveralls.io/repos/github/rakit/validation/badge.svg?branch=setup_coveralls)](https://coveralls.io/github/rakit/validation)

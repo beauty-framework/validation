@@ -1,26 +1,26 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Helper;
-use Rakit\Validation\MimeTypeGuesser;
-use Rakit\Validation\Rule;
+use Beauty\Validation\Helper;
+use Beauty\Validation\MimeTypeGuesser;
+use Beauty\Validation\Rule;
 
 class Mimes extends Rule
 {
     use Traits\FileTrait;
 
     /** @var string */
-    protected $message = "The :attribute file type must be :allowed_types";
+    protected string $message = "The :attribute file type must be :allowed_types";
 
-    /** @var string|int */
-    protected $maxSize = null;
+    /** @var string|int|null */
+    protected string|int|null $maxSize = null;
 
-    /** @var string|int */
-    protected $minSize = null;
+    /** @var string|int|null */
+    protected string|int|null $minSize = null;
 
     /** @var array */
-    protected $allowedTypes = [];
+    protected array $allowedTypes = [];
 
     /**
      * Given $params and assign $this->params

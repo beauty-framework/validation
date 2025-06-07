@@ -1,18 +1,19 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Helper;
-use Rakit\Validation\Rule;
+use Beauty\Validation\Helper;
+use Beauty\Validation\MissingRequiredParameterException;
+use Beauty\Validation\Rule;
 
 class In extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute only allows :allowed_values";
+    protected string $message = "The :attribute only allows :allowed_values";
 
     /** @var bool */
-    protected $strict = false;
+    protected bool $strict = false;
 
     /**
      * Given $params and assign the $this->params
@@ -35,7 +36,7 @@ class In extends Rule
      * @param bool $strict
      * @return void
      */
-    public function strict(bool $strict = true)
+    public function strict(bool $strict = true): void
     {
         $this->strict = $strict;
     }
@@ -45,6 +46,7 @@ class In extends Rule
      *
      * @param mixed $value
      * @return bool
+     * @throws MissingRequiredParameterException
      */
     public function check($value): bool
     {

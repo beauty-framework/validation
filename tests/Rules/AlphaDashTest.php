@@ -1,14 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Tests;
+namespace Beauty\Validation\Tests;
 
-use Rakit\Validation\Rules\AlphaDash;
+use Beauty\Validation\Rules\AlphaDash;
 use PHPUnit\Framework\TestCase;
 
 class AlphaDashTest extends TestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->rule = new AlphaDash;
     }

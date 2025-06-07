@@ -1,14 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Tests;
+namespace Beauty\Validation\Tests;
 
-use Rakit\Validation\Rules\Ipv4;
+use Beauty\Validation\Rules\Ipv4;
 use PHPUnit\Framework\TestCase;
 
 class Ipv4Test extends TestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->rule = new Ipv4;
     }

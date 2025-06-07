@@ -1,18 +1,18 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class Before extends Rule
 {
     use Traits\DateUtilsTrait;
 
     /** @var string */
-    protected $message = "The :attribute must be a date before :time.";
+    protected string $message = "The :attribute must be a date before :time.";
 
     /** @var array */
-    protected $fillableParams = ['time'];
+    protected array $fillableParams = ['time'];
 
     /**
      * Check the $value is valid

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rakit\Validation\Rules\Interfaces;
+namespace Beauty\Validation\Rules\Interfaces;
 
 interface ModifyValue
 {
@@ -11,5 +11,5 @@ interface ModifyValue
      * @param mixed $value
      * @return mixed
      */
-    public function modifyValue($value);
+    public function modifyValue(mixed$value): mixed;
 }

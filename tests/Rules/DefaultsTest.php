@@ -1,13 +1,13 @@
 <?php
 
-namespace Rakit\Validation\Tests;
+namespace Beauty\Validation\Tests;
 
-use Rakit\Validation\Rules\Defaults;
+use Beauty\Validation\Rules\Defaults;
 use PHPUnit\Framework\TestCase;
 
 class DefaultsTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->rule = new Defaults;
     }

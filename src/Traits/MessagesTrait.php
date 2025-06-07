@@ -1,12 +1,12 @@
 <?php
 
-namespace Rakit\Validation\Traits;
+namespace Beauty\Validation\Traits;
 
 trait MessagesTrait
 {
 
     /** @var array */
-    protected $messages = [];
+    protected array $messages = [];
 
     /**
      * Given $key and $message to set message
@@ -15,7 +15,7 @@ trait MessagesTrait
      * @param mixed $message
      * @return void
      */
-    public function setMessage(string $key, string $message)
+    public function setMessage(string $key, string $message): void
     {
         $this->messages[$key] = $message;
     }
@@ -26,7 +26,7 @@ trait MessagesTrait
      * @param array $messages
      * @return void
      */
-    public function setMessages(array $messages)
+    public function setMessages(array $messages): void
     {
         $this->messages = array_merge($this->messages, $messages);
     }

@@ -1,15 +1,16 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Helper;
-use Rakit\Validation\Rule;
+use Beauty\Validation\Helper;
+use Beauty\Validation\MissingRequiredParameterException;
+use Beauty\Validation\Rule;
 
 class Extension extends Rule
 {
-    
+
     /** @var string */
-    protected $message = "The :attribute must be a :allowed_extensions file";
+    protected string $message = "The :attribute must be a :allowed_extensions file";
 
      /**
      * Given $params and assign the $this->params
@@ -25,12 +26,13 @@ class Extension extends Rule
         $this->params['allowed_extensions'] = $params;
         return $this;
     }
-    
+
     /**
      * Check the $value is valid
      *
      * @param mixed $value
      * @return bool
+     * @throws MissingRequiredParameterException
      */
     public function check($value): bool
     {

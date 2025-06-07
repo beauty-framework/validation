@@ -1,14 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Beauty\Validation\Rules;
 
-use Rakit\Validation\Rule;
+use Beauty\Validation\Rule;
 
 class TypeArray extends Rule
 {
 
     /** @var string */
-    protected $message = "The :attribute must be array";
+    protected string $message = "The :attribute must be array";
 
     /**
      * Check the $value is valid
