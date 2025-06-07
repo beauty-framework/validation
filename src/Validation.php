@@ -34,7 +34,7 @@ class Validation
     protected array $invalidData = [];
 
     /** @var ErrorBag */
-    public ErrorBag $errors;
+    public $errors;
 
     /**
      * Constructor
@@ -44,6 +44,7 @@ class Validation
      * @param array $rules
      * @param array $messages
      * @return void
+     * @throws Exception
      */
     public function __construct(
         Validator $validator,

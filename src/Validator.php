@@ -51,7 +51,7 @@ class Validator
      */
     public function getValidator($key): mixed
     {
-        return isset($this->validators[$key]) ? $this->validators[$key] : null;
+        return $this->validators[$key] ?? null;
     }
 
     /**

@@ -8,10 +8,10 @@ abstract class Rule
     protected string $key;
 
     /** @var Attribute|null */
-    protected Attribute|null $attribute;
+    protected $attribute;
 
     /** @var Validation|null */
-    protected Validation|null $validation;
+    protected $validation;
 
     /** @var bool */
     protected bool $implicit = false;
@@ -36,7 +36,7 @@ abstract class Rule
      * @param Validation $validation
      * @return void
      */
-    public function setValidation(Validation $validation)
+    public function setValidation(Validation $validation): void
     {
         $this->validation = $validation;
     }
@@ -47,7 +47,7 @@ abstract class Rule
      * @param string $key
      * @return void
      */
-    public function setKey(string $key)
+    public function setKey(string $key): void
     {
         $this->key = $key;
     }
@@ -57,7 +57,7 @@ abstract class Rule
      *
      * @return string
      */
-    public function getKey()
+    public function getKey(): string
     {
         return $this->key ?: get_class($this);
     }
@@ -68,7 +68,7 @@ abstract class Rule
      * @param Attribute $attribute
      * @return void
      */
-    public function setAttribute(Attribute $attribute)
+    public function setAttribute(Attribute $attribute): void
     {
         $this->attribute = $attribute;
     }
@@ -76,9 +76,9 @@ abstract class Rule
     /**
      * Get attribute
      *
-     * @return Attribute|null
+     * @return Attribute
      */
-    public function getAttribute()
+    public function getAttribute(): Attribute
     {
         return $this->attribute;
     }
@@ -143,7 +143,7 @@ abstract class Rule
      */
     public function parameter(string $key)
     {
-        return isset($this->params[$key])? $this->params[$key] : null;
+        return $this->params[$key] ?? null;
     }
 
     /**
@@ -153,7 +153,7 @@ abstract class Rule
      * @param string $text
      * @return void
      */
-    public function setParameterText(string $key, string $text)
+    public function setParameterText(string $key, string $text): void
     {
         $this->paramsTexts[$key] = $text;
     }
@@ -218,7 +218,7 @@ abstract class Rule
      * @return void
      * @throws MissingRequiredParameterException
      */
-    protected function requireParameters(array $params)
+    protected function requireParameters(array $params): void
     {
         foreach ($params as $param) {
             if (!isset($this->params[$param])) {

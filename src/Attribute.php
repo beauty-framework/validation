@@ -15,13 +15,13 @@ class Attribute
     protected ?string $alias;
 
     /** @var Validation */
-    protected Validation $validation;
+    protected $validation;
 
     /** @var bool */
-    protected $required = false;
+    protected bool $required = false;
 
-    /** @var Validation|null */
-    protected ?Validation $primaryAttribute = null;
+    /** @var Validation */
+    protected $primaryAttribute;
 
     /** @var array */
     protected array $otherAttributes = [];
@@ -211,7 +211,7 @@ class Attribute
      * @param string|null $key
      * @return mixed
      */
-    public function getValue(string $key = null)
+    public function getValue(string|null $key = null): mixed
     {
         if ($key && $this->isArrayAttribute()) {
             $key = $this->resolveSiblingKey($key);
