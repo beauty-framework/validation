@@ -1,5 +1,5 @@
 {
-  "name": "rakit/validation",
+  "name": "beauty/validation",
   "description": "PHP Laravel like standalone validation library",
   "license": "MIT",
   "authors": [
@@ -10,12 +10,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "Rakit\\Validation\\": "src"
+      "Beauty\\Validation\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Rakit\\Validation\\Tests\\": ["tests", "tests/Fixtures"]
+      "Beauty\\Validation\\Tests\\": ["tests", "tests/Fixtures"]
     }
   },
   "require": {
