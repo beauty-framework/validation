@@ -2,7 +2,7 @@
   "name": "beauty-framework/validation",
   "description": "PHP Laravel like standalone validation library",
   "license": "MIT",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "minimum-stability": "stable",
   "authors": [
     {
