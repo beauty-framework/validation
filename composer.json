@@ -1,5 +1,5 @@
 {
-  "name": "beauty/validation",
+  "name": "beauty-framework/validation",
   "description": "PHP Laravel like standalone validation library",
   "license": "MIT",
   "authors": [
